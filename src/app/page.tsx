@@ -38,6 +38,29 @@ export default function Home() {
                 <p>
                   I've shipped one app to the App Store, built another open-source project, and I'm currently working on a third app to explore and master modular architecture in SwiftUI. My audio background taught me to dig deep into documentation and experiment relentlessly until I truly understand how things work. Now I'm looking to bring that same curiosity and persistence to a junior SwiftUI developer role.
                 </p>
+                
+                <div className="mt-8 text-center">
+                  <a 
+                    href="/cv-mathis-gaignet.pdf"
+                    target="_blank"
+                    className="inline-flex items-center px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-medium transition-colors duration-300 space-x-2"
+                  >
+                    <svg 
+                      className="w-5 h-5" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                      />
+                    </svg>
+                    <span>View my resume</span>
+                  </a>
+                </div>
               </div>
             </motion.div>
 
