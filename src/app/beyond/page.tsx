@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { MUSIC_ALBUMS, GAMES, MOVIES, SERIES, BOOKS, EXTERNAL_URLS, DESIGN_TOKENS } from '@/constants'
+import { MUSIC_ALBUMS, GAMES, MOVIES, SERIES, BOOKS, EXTERNAL_URLS } from '@/constants'
 
 export default function Beyond() {
 

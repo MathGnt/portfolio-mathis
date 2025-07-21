@@ -19,7 +19,7 @@ interface FrameworkButtonProps {
   index: number
 }
 
-const FrameworkButton = ({ name, description, url, isClickable = true, index }: FrameworkButtonProps) => {
+const FrameworkButton = ({ name, description, url, isClickable = true }: FrameworkButtonProps) => {
   const baseClasses = "px-6 py-3 rounded-full font-light mb-3 text-sm tracking-wide inline-block"
   const clickableClasses = "border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105"
   const nonClickableClasses = "border-2 border-gray-400 text-gray-600"

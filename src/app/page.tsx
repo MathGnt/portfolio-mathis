@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+// import Link from 'next/link' // Unused for now
 import MediumSection from '@/components/ui/mediumsection'
 
 export default function Home() {
