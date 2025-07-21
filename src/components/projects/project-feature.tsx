@@ -62,7 +62,7 @@ export default function ProjectFeatureComponent({ feature }: ProjectFeatureProps
               feature.title === 'Create Your Signature' ? 'gap-4 lg:ml-96 lg:scale-125' : ''
             }`}
           >
-            {isMultipleImages ? (
+            {isMultipleImages && Array.isArray(feature.image) ? (
               <>
                 <Image
                   src={feature.image[0]}
@@ -80,7 +80,7 @@ export default function ProjectFeatureComponent({ feature }: ProjectFeatureProps
                 />
               </>
             ) : (
-              feature.image && (
+              feature.image && typeof feature.image === 'string' && (
                 <Image
                   src={feature.image}
                   alt={feature.title}
