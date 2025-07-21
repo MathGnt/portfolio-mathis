@@ -17,7 +17,7 @@ export interface TechnicalChallenge {
 export interface ProjectFeature {
   title: string
   description: string
-  image?: string
+  image?: string | string[]
   codeImage?: {
     src: string
     alt: string
