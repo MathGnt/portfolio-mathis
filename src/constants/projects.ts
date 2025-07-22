@@ -67,7 +67,7 @@ export const ALBEDO_TECH_STACK: TechStack = {
     { name: 'CoreLocation', link: 'https://developer.apple.com/documentation/corelocation', description: 'Position tracking' }
   ],
   customPackages: [
-    { name: 'AlbedoKit', description: 'In-depth satellite analysis' },
+    { name: 'Vapor', link: 'https://vapor.codes', description: 'Backend' },
     { name: 'SatelliteKit', link: 'https://github.com/gavineadie/SatelliteKit', description: 'TLE parsing & mechanics' },
     { name: 'TinyMoon', link: 'https://github.com/mannylopez/TinyMoon', description: 'Moon illumination' },
     { name: 'SatelliteUtilities', link: 'https://github.com/gavineadie/SatelliteUtilities/tree/main', description: 'Coordinate transforms' }

@@ -7,7 +7,7 @@ import MediumSection from '@/components/ui/mediumsection'
 export default function Home() {
   return (
     <>
-      <section className="min-h-screen flex items-center justify-center px-6 bg-slate-100 text-gray-900">
+      <section className="min-h-screen flex items-center justify-center px-6 bg-slate-100 text-gray-900 pt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             

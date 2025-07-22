@@ -16,7 +16,7 @@ export default function ProjectHeroComponent({ project }: ProjectHeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center justify-center space-x-6 mb-8"
+          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 px-4"
         >
           <Image
             src={project.icon}
@@ -25,7 +25,7 @@ export default function ProjectHeroComponent({ project }: ProjectHeroProps) {
             height={80}
             className="rounded-2xl shadow-lg"
           />
-          <h1 className="text-6xl font-black text-gray-900 tracking-tight" 
+          <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight text-center sm:text-left" 
               style={{ fontFamily: 'ui-serif, Georgia, serif' }}>
             {project.title}
           </h1>

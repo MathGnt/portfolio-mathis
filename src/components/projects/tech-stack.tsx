@@ -40,7 +40,7 @@ export default function TechStackComponent({ techStack, onArchitectureClick }: T
               Apple Frameworks
             </h3>
             <div className={`grid ${
-              techStack.customPackages ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8' : 'grid-cols-2 md:grid-cols-4 gap-10'
+              techStack.customPackages ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10'
             }`}>
               {techStack.frameworks.map((framework) => (
                 <div key={framework.name} className="text-center group">
@@ -68,12 +68,13 @@ export default function TechStackComponent({ techStack, onArchitectureClick }: T
               <div>
                 <h3 className="text-2xl font-light text-gray-900 mb-6 text-center tracking-wide" 
                     style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
-                  Custom Swift Packages
+                  Other Packages
                 </h3>
                 <p className="text-base text-gray-600 leading-relaxed text-center mb-10 max-w-3xl mx-auto font-light">
                   I initially created my own package (AlbedoKit) for magnitude calculations and Earth shadow computations and proposed integrating it into SatelliteKit. 
                   The maintainer preferred to keep SatelliteKit focused on its core functionality, but suggested I contribute 
-                  to his other package (SatelliteUtilities) that specializes in satellite processing like ground tracks. I added my work to that project.
+                  to his other package (SatelliteUtilities) that specializes in satellite processing like ground tracks. I added my work to that project. 
+                  I also built a custom backend with Vapor to implement intelligent caching, allowing users to share cached API data and reducing redundant API calls.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {techStack.customPackages.map((pkg) => (

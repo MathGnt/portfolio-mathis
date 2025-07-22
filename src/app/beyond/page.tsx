@@ -46,8 +46,8 @@ export default function Beyond() {
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                transition={{ delay: 0.2, duration: 0.6 }}
                 className="text-lg text-gray-600 mb-8"
               >
                 Music is a huge part of my life. I've been playing guitar since my youth and have a deep love for classic rock from the 70s. 

@@ -38,13 +38,13 @@ export default function ProjectFeatureComponent({ feature }: ProjectFeatureProps
                 width={feature.codeImage.width}
                 height={feature.codeImage.height}
                 caption={feature.codeImage.caption}
-                className={feature.title === 'Create Your Signature' ? 'scale-125 ml-16' : 
-                          feature.title === 'Detailed Cocktail View' ? 'scale-90 -ml-8' : ''}
+                className={feature.title === 'Create Your Signature' ? 'scale-100 sm:scale-125 ml-0 sm:ml-16' : 
+                          feature.title === 'Detailed Cocktail View' ? 'scale-90 ml-0 sm:-ml-8' : ''}
                 containerClassName={feature.title === 'Create Your Signature' ? 'mt-12' : 
                                   feature.title === 'Detailed Cocktail View' ? 'mt-2' : 'mt-8'}
-                captionClassName={feature.title === 'Create Your Signature' ? 'text-xs text-gray-400 mt-12 text-center font-mono italic ml-24' :
-                                feature.title === 'Detailed Cocktail View' ? 'text-xs text-gray-400 -mt-2 text-center font-mono italic -ml-8' :
-                                'text-xs text-gray-400 mt-6 text-center font-mono italic ml-6'}
+                captionClassName={feature.title === 'Create Your Signature' ? 'text-xs text-gray-400 mt-12 text-center font-mono italic ml-0 sm:ml-24' :
+                                feature.title === 'Detailed Cocktail View' ? 'text-xs text-gray-400 -mt-2 text-center font-mono italic ml-0 sm:-ml-8' :
+                                'text-xs text-gray-400 mt-6 text-center font-mono italic ml-0 sm:ml-6'}
               />
             )}
           </motion.div>
@@ -59,7 +59,7 @@ export default function ProjectFeatureComponent({ feature }: ProjectFeatureProps
             } ${
               feature.title === 'Visual Tracking & Navigation' ? 'lg:ml-8' : ''
             } ${
-              feature.title === 'Create Your Signature' ? 'gap-4 lg:ml-96 lg:scale-125' : ''
+              feature.title === 'Create Your Signature' ? 'flex-col sm:flex-row gap-2 sm:gap-4 lg:ml-96 lg:scale-125' : ''
             }`}
           >
             {isMultipleImages && Array.isArray(feature.image) ? (
