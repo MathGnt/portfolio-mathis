@@ -65,7 +65,7 @@ export default function TechStackComponent({ techStack, onArchitectureClick }: T
                 <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent w-full max-w-md"></div>
               </div>
 
-              <div>
+              <div className="mb-16">
                 <h3 className="text-2xl font-light text-gray-900 mb-6 text-center tracking-wide" 
                     style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
                   Other Packages
@@ -98,6 +98,30 @@ export default function TechStackComponent({ techStack, onArchitectureClick }: T
                       <p className="text-sm text-gray-500 font-light">{pkg.description}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center my-16">
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent w-full max-w-md"></div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-light text-gray-900 mb-6 text-center tracking-wide" 
+                    style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
+                  Architecture
+                </h3>
+                <p className="text-base text-gray-600 leading-relaxed text-center mb-10 max-w-3xl mx-auto font-light">
+                  Throughout Albedo's development, I iteratively refactored the application architecture to deeply understand SwiftUI patterns. 
+                  I evolved from basic MV to MVVM, then embraced Clean Architecture principles for better separation of concerns. 
+                  The final iteration features a horizontal, modular architecture built with Swift Package Manager, enabling excellent scalability, 
+                  comprehensive testing, and seamless feature additions without disrupting the entire codebase.
+                </p>
+                <div className="flex justify-center">
+                  <img 
+                    src="/images/screenshots/albedo-architecture.png" 
+                    alt="Albedo Architecture Diagram" 
+                    className="max-w-full h-auto rounded-lg shadow-lg"
+                  />
                 </div>
               </div>
             </>

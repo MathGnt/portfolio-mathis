@@ -1,4 +1,4 @@
-import { ProjectHero, TechnicalChallenge, ProjectFeature, TechStack } from '@/types/projects'
+import { ProjectHero, TechnicalChallenge, ProjectFeature, TechStack, ProjectArchitecture } from '@/types/projects'
 
 export const ALBEDO_HERO: ProjectHero = {
   icon: '/images/screenshots/logos/albedo.jpg',
@@ -72,6 +72,12 @@ export const ALBEDO_TECH_STACK: TechStack = {
     { name: 'TinyMoon', link: 'https://github.com/mannylopez/TinyMoon', description: 'Moon illumination' },
     { name: 'SatelliteUtilities', link: 'https://github.com/gavineadie/SatelliteUtilities/tree/main', description: 'Coordinate transforms' }
   ]
+}
+
+export const ALBEDO_ARCHITECTURE: ProjectArchitecture = {
+  title: 'Architecture',
+  description: 'Throughout Albedo\'s development, I broke and rebuilt the application multiple times to master SwiftUI architecture patterns. I evolved from basic MVC to MVVM, then embraced Clean Architecture principles for better separation of concerns. The final iteration features a horizontal, modular architecture built with Swift Package Manager, enabling excellent scalability, comprehensive testing, and seamless feature additions without disrupting the entire codebase.',
+  image: '/images/screenshots/albedo-architecture.png'
 }
 
 export const BARTINDER_HERO: ProjectHero = {

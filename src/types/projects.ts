@@ -46,3 +46,9 @@ export interface TechStack {
   frameworks: Framework[]
   customPackages?: CustomPackage[]
 }
+
+export interface ProjectArchitecture {
+  title: string
+  description: string
+  image: string
+}
