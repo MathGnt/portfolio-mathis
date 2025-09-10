@@ -32,7 +32,7 @@ export default function Home() {
                 </p>
 
                 <p>
-                  I committed to spending many hours every day for 8 months learning Swift, SwiftUI, and Apple's frameworks. My goal was to really master the fundamentals. There's still so much I want to learn, and honestly, I can't wait to keep growing! But that drive and persistence is what pushes me forward every day.
+                  I committed to spending many hours every day for 1 year learning Swift, SwiftUI, and Apple's frameworks. My goal was to really master the fundamentals. There's still so much I want to learn, and honestly, I can't wait to keep growing! But that drive and persistence is what pushes me forward every day.
                 </p>
                 
                 <p>
