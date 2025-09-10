@@ -22,9 +22,9 @@ export default function MediumCard({ article, index }: MediumCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden group"
+      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden group h-full"
     >
-      <div className="p-6">
+      <div className="p-6 h-full flex flex-col">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-sm">M</span>
@@ -43,24 +43,24 @@ export default function MediumCard({ article, index }: MediumCardProps) {
           </motion.div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 flex-grow">
           <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-yellow-700 transition-colors tracking-tight" style={{ fontFamily: 'var(--font-apple-display)' }}>
             {article.title}
           </h3>
           <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">
             {article.subtitle}
           </p>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-4">
-          {article.tags.map((tag, tagIndex) => (
-            <span
-              key={tagIndex}
-              className="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-xs font-medium"
-            >
-              {tag}
-            </span>
-          ))}
+          
+          <div className="flex flex-wrap gap-2 mt-4">
+            {article.tags.map((tag, tagIndex) => (
+              <span
+                key={tagIndex}
+                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-xs font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
         <motion.a

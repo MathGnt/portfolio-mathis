@@ -37,6 +37,14 @@ export const MEDIUM_ARTICLES: MediumArticle[] = [
     publishedDate: "Jul 2025",
     readTime: "12 min read",
     tags: ["Concurrency", "Async/Await", "Sendable", "MainActor"]
+  },
+  {
+    title: "SwiftUI Redraw System In-Depth",
+    subtitle: "A comprehensive exploration of SwiftUI's redraw system covering attributes recomputation, diffing algorithms, and observation patterns. Understand how SwiftUI optimizes view updates for smooth, efficient UI rendering.",
+    url: "https://medium.com/@matgnt/swiftui-redraw-system-in-depth-attributes-recomputation-diffing-and-observation-66b469fdcada",
+    publishedDate: "Sep 2025",
+    readTime: "10 min read",
+    tags: ["SwiftUI", "View Updates", "Diffing", "Observation"]
   }
 ]
 
