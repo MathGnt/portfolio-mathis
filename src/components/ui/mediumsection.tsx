@@ -18,7 +18,7 @@ export default function MediumSection() {
             I also enjoy writing about iOS development
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-            When I dive deep into something and truly understand it, I like to share what I've learned. Here are my first two articles sharing insights on SwiftData and Swift Concurrency. More articles are coming soon as I continue exploring new topics.
+            When I dive deep into something and truly understand it, I like to share what I've learned. Here are my first articles sharing insights on Swift development. More articles are coming soon as I continue exploring new topics.
           </p>
         </motion.div>
 
