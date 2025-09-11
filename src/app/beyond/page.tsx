@@ -56,23 +56,6 @@ export default function Beyond() {
                 I also listen to a lot of music on streaming platforms obviously, I find that algorithms are always really good at helping us discover new gems!
               </motion.p>
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="mb-4"
-              >
-                <a 
-                  href={EXTERNAL_URLS.DISCOGS}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-medium transition-colors duration-300 space-x-2"
-                >
-                  <Image src="/images/screenshots/logos/discogslogo.png" alt="Discogs logo" className="w-5 h-5 invert" width={20} height={20} />
-                  <span>View my collection</span>
-                </a>
-              </motion.div>
             </div>
             
             <div className="lg:col-span-2">
