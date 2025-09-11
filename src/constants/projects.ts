@@ -13,26 +13,26 @@ export const ALBEDO_HERO: ProjectHero = {
 
 export const ALBEDO_CHALLENGE: TechnicalChallenge = {
   title: 'Technical Challenge',
-  description: 'The biggest challenge was implementing the complex physics calculations to determine the exact minute when satellites enter and exit Earth\'s shadow, plus calculating magnitude variations throughout each pass. Obviously the architecture wasn\'t simple, I was at the beginning of my learning journey. I had to break and rebuild the app several times until I truly understood SwiftUI architecture.'
+  description: 'One key challenge was implementing the complex physics calculations to determine the exact minute when satellites enter and exit Earth\'s shadow, plus calculating magnitude variations throughout each pass. Obviously the architecture wasn\'t simple, I was at the beginning of my learning journey. I had to break and rebuild the app several times until I truly understood SwiftUI architecture.'
 }
 
 export const ALBEDO_FEATURES: ProjectFeature[] = [
   {
     title: 'Live Ground Tracks & Pass Prediction',
     description: 'Watch real-time satellite ground tracks with MapKit integration. See the next pass for your selected satellite and get precise visibility chances based on weather conditions.',
-    image: '/images/screenshots/screenshot1.png',
+    image: '/images/screenshots/IMG_7204-portrait.png',
     codeImage: {
       src: '/images/screenshots/groundtracks.png',
       alt: 'Ground tracks implementation',
       width: 1205,
       height: 401,
-      caption: 'Ground tracks calculation method: SGP4 for low Earth orbit satellites (90-minute revolutions), SDP4 for high orbit satellites.'
+      caption: 'Ground tracks calculation method: SGP4 for low Earth orbit satellites (90-minute revolutions), SDP4 for high orbit satellites. Implementation from my custom Swift Package Manager AlbedoKit.'
     }
   },
   {
     title: 'Deep Dive into Pass Details',
     description: 'Explore every aspect of a satellite pass across 7 days of visibility. Get rise and set times, detailed weather conditions, satellite magnitude variations, and astronomical context.',
-    image: '/images/screenshots/screenshot2.png',
+    image: ['/images/screenshots/passlist.png', '/images/screenshots/maindetail.png'],
     codeImage: {
       src: '/images/screenshots/weatherkit.png',
       alt: 'WeatherKit integration',
@@ -45,13 +45,13 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
   {
     title: 'Visual Tracking & Navigation',
     description: 'Swift Charts integration provides clear visual representations of satellite data. An integrated compass helps you track exactly where the satellite will pass in the sky.',
-    image: '/images/screenshots/screenshot3.png',
+    image: '/images/screenshots/chartview.png',
     codeImage: {
-      src: '/images/screenshots/chartselection.png',
-      alt: 'Chart selection implementation',
-      width: 1080,
-      height: 380,
-      caption: 'Chart selection method using chartXSelection to manage interactive data visualization.'
+      src: '/images/screenshots/switchshadow.png',
+      alt: 'ShadowSwitch implementation',
+      width: 1600,
+      height: 800,
+      caption: 'Chart selection switcher using chartXSelection to manage interactive data visualization.'
     }
   }
 ]

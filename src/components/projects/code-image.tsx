@@ -28,7 +28,7 @@ export default function CodeImage({
         alt={alt}
         width={width}
         height={height}
-        className={`rounded-xl shadow-lg scale-90 sm:scale-110 ml-0 sm:ml-6 max-w-full h-auto ${className}`}
+        className={`rounded-xl shadow-lg ${className ? className : 'scale-90 sm:scale-110 ml-0 sm:ml-6'} max-w-full h-auto`}
         style={{ imageRendering: 'crisp-edges' }}
       />
       <p 

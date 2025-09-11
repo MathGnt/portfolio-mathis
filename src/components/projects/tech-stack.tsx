@@ -116,13 +116,6 @@ export default function TechStackComponent({ techStack, onArchitectureClick }: T
                   The final iteration features a horizontal, modular architecture built with Swift Package Manager, enabling excellent scalability, 
                   comprehensive testing, and seamless feature additions without disrupting the entire codebase.
                 </p>
-                <div className="flex justify-center">
-                  <img 
-                    src="/images/screenshots/albedo-architecture.png" 
-                    alt="Albedo Architecture Diagram" 
-                    className="max-w-full h-auto rounded-lg shadow-lg"
-                  />
-                </div>
               </div>
             </>
           )}
