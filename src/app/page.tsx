@@ -32,11 +32,11 @@ export default function Home() {
                 </p>
 
                 <p>
-                  I committed to spending many hours every day for 1 year learning Swift, SwiftUI, and Apple's frameworks. My goal was to really master the fundamentals. There's still so much I want to learn, and honestly, I can't wait to keep growing! But that drive and persistence is what pushes me forward every day.
+                  I committed to mastering Swift, SwiftUI, and Apple's frameworks—not just learning syntax, but understanding how things work under the hood. I've shipped Albedo to the App Store, built BarTinder as an open-source project with Apple Intelligence integration using Foundation Models, and write technical articles about Swift Concurrency that have received 400+ engagements.
                 </p>
-                
+
                 <p>
-                  I've shipped one app to the App Store, built another open-source project, and I'm currently working on a third app to explore and master modular architecture in SwiftUI. My audio background taught me to dig deep into documentation and experiment relentlessly until I truly understand how things work. Now I'm looking to bring that same curiosity and persistence to a junior SwiftUI developer role.
+                  My audio engineering background taught me to dig deep into documentation and experiment relentlessly until I truly understand systems. I approach iOS development the same way: Clean Architecture, comprehensive testing with Swift Testing, and a focus on building apps that are both technically solid and delightful to use.
                 </p>
                 
                 <div className="mt-8 text-center">
