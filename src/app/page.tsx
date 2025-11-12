@@ -32,7 +32,7 @@ export default function Home() {
                 </p>
 
                 <p>
-                  I committed to mastering Swift, SwiftUI, and Apple's frameworks—not just learning syntax, but understanding how things work under the hood. I've shipped Albedo to the App Store, built BarTinder as an open-source project with Apple Intelligence integration using Foundation Models, and write technical articles about Swift Concurrency that have received 400+ engagements.
+                  I committed to mastering Swift, SwiftUI, and Apple's frameworks, not just learning syntax, but understanding how things work under the hood. I've shipped Albedo to the App Store, built BarTinder as an open-source project with Apple Intelligence integration using Foundation Models, and write technical articles on topics like Swift Concurrency that have received 400+ engagements.
                 </p>
 
                 <p>

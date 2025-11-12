@@ -25,6 +25,11 @@ export interface ProjectFeature {
     height: number
     caption: string
   }
+  codeBlock?: {
+    code: string
+    language: string
+    caption: string
+  }
   reversed?: boolean
 }
 

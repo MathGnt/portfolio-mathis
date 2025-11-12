@@ -34,17 +34,15 @@ export default function Projects() {
 
   const bartenderIntroDescription = [
     `Since Albedo is an app focused on REST APIs and physical calculations, I also wanted to
-    create a simpler CRUD application that allows adding, updating and deleting items using Swift Data.
-    I designed the app's architecture around persistent data, and used a local JSON file as a mock API to
-    manage ingredients and cocktails.`,
-    
-    `When iOS 26 beta dropped, I integrated the latest features like Foundation Models (Apple Intelligence)
-    and Liquid Glass design elements, as well as the new settings for Xcode 26 (Default Actor Isolation and Approachable Concurrency) to stay current with Apple's newest developments.
-    Since I don't have a formal UI/UX design background, I drew heavy inspiration from Apple's stock applications and design language. 
+    create a simpler CRUD application that allows adding, updating and deleting items using Swift Data.`,
+
+    `Built with the simplicity and modern approach of SwiftUI, BarTinder serves as an excellent learning resource for iOS developers at any level. Whether you're exploring SwiftData and CRUD operations, or discovering the latest iOS 26 features like Foundation Models (Apple Intelligence), Liquid Glass design elements, and Xcode 26's Default Actor Isolation and Approachable Concurrency settings, this project showcases real-world implementations that stay current with Apple's newest developments.`,
+
+    `Since I don't have a formal UI/UX design background, I drew heavy inspiration from Apple's stock applications and design language.
     I pay close attention to Apple's Human Interface Guidelines to ensure the app feels truly native.`,
-    
-    `I also wanted to build BarTinder with a very clean architecture using use cases, repositories, 
-    dependency injection, and proper separation of concerns. I wrote extensive tests using Swift Testing 
+
+    `I also wanted to build BarTinder with a very clean architecture using use cases, repositories,
+    dependency injection, and proper separation of concerns. I wrote extensive tests using Swift Testing
     to practice modern testing techniques and catch any breaking changes instantly.
     By focusing on the CRUD aspect, lists, scroll views and UI/UX, I was targeting a common application pattern
     that is widely used across many types of products.`

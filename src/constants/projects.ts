@@ -21,11 +21,23 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
     title: 'Live Ground Tracks & Pass Prediction',
     description: 'Watch real-time satellite ground tracks with MapKit integration. See the next pass for your selected satellite and get precise visibility chances based on weather conditions.',
     image: '/images/screenshots/IMG_7204-portrait.png',
-    codeImage: {
-      src: '/images/screenshots/groundtracks.png',
-      alt: 'Ground tracks implementation',
-      width: 1205,
-      height: 401,
+    codeBlock: {
+      code: `public static func calculateOrbitPaths(for satellite: Satellite) throws -> [CLLocationCoordinate2D] {
+    var coordinates: [CLLocationCoordinate2D] = []
+    let startDate = Date()
+
+    for minute in 0...90 {
+        let futureDate = startDate.addingTimeInterval(Double(minute) * 60)
+        let position = try satellite.geoPosition(julianDays: futureDate.julianDate)
+        let coordinate = CLLocationCoordinate2D(
+            latitude: position.lat,
+            longitude: position.lon - floor((position.lon + 180) / 360) * 360
+        )
+        coordinates.append(coordinate)
+    }
+    return coordinates
+}`,
+      language: 'swift',
       caption: 'Ground tracks calculation method: SGP4 for low Earth orbit satellites (90-minute revolutions), SDP4 for high orbit satellites. Implementation from my custom Swift Package Manager AlbedoKit.'
     }
   },
@@ -33,11 +45,24 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
     title: 'Deep Dive into Pass Details',
     description: 'Explore every aspect of a satellite pass across 7 days of visibility. Get rise and set times, detailed weather conditions, satellite magnitude variations, and astronomical context.',
     image: ['/images/screenshots/passlist.png', '/images/screenshots/maindetail.png'],
-    codeImage: {
-      src: '/images/screenshots/weatherkit.png',
-      alt: 'WeatherKit integration',
-      width: 955,
-      height: 527,
+    codeBlock: {
+      code: `do {
+    async let hourlyForecast = weatherService.weather(
+        for: userLocation,
+        including: .hourly(startDate: nowDate, endDate: sevenDaysAhead)
+    )
+    async let dailyForecast = weatherService.weather(
+        for: userLocation,
+        including: .daily(startDate: nowDate, endDate: sevenDaysAhead)
+    )
+
+    let (hourly, daily) = try await (hourlyForecast, dailyForecast)
+    return (hourly, daily)
+
+} catch {
+    throw WeatherError.failedToFetchWeather
+}`,
+      language: 'swift',
       caption: 'Albedo powered by WeatherKit for pass forecasting, visibility probability calculations, and weather conditions analysis.'
     },
     reversed: true
@@ -46,11 +71,16 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
     title: 'Visual Tracking & Navigation',
     description: 'Swift Charts integration provides clear visual representations of satellite data. An integrated compass helps you track exactly where the satellite will pass in the sky.',
     image: '/images/screenshots/chartview.png',
-    codeImage: {
-      src: '/images/screenshots/switchshadow.png',
-      alt: 'ShadowSwitch implementation',
-      width: 1600,
-      height: 800,
+    codeBlock: {
+      code: `switch model.selectionState {
+case .selected(let selectedMagnitude):
+    RuleMarkSelection(selectedMagnitude: selectedMagnitude, shadowEvent: model.pass.shadowEvent)
+case .unselectedWithShadowEvent(let shadowState):
+    ShadowRuleMark(shadowState: shadowState)
+case .unselected:
+    EmptyRuleMark()
+}`,
+      language: 'swift',
       caption: 'Chart selection switcher using chartXSelection to manage interactive data visualization.'
     }
   }
@@ -93,7 +123,7 @@ export const BARTINDER_HERO: ProjectHero = {
 
 export const BARTINDER_CHALLENGE: TechnicalChallenge = {
   title: 'Technical Challenge',
-  description: 'Managing relationships between cocktails, ingredients, and measurements was challenging with SwiftData. Apple encourages using \\.modelContext directly in views, but I wanted cleaner architecture. My solution was centralizing data logic in a custom class and injecting it into the SwiftUI environment.'
+  description: 'Allowing users to cancel cocktail edits while using @Bindable presented a significant challenge. The solution required creating a draft SwiftData context to handle temporary changes, carefully managing potential conflicts between different contexts and @Query, all while maintaining clean and maintainable code architecture throughout the project.'
 }
 
 export const BARTINDER_FEATURES: ProjectFeature[] = [
@@ -101,11 +131,22 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
     title: 'Swipe Your Taste',
     description: 'Browse through ingredient cards with familiar swipe gestures. Like vodka? Swipe right. Hate Campari? Swipe left.',
     image: '/images/screenshots/swiping-portrait.png',
-    codeImage: {
-      src: '/images/screenshots/swiping-code.png',
-      alt: 'Swipe gesture implementation',
-      width: 980,
-      height: 464,
+    codeBlock: {
+      code: `private func handleSwipe(_ value: DragGesture.Value) {
+    if value.translation.width >= threshold {
+        offset = BarTinderApp.SwipingSettings.swipeOutDistance
+        rotation = BarTinderApp.SwipingSettings.maxRotation
+        Task { await model.swipeRight(card: cardIngredient) }
+    } else if value.translation.width <= -threshold {
+        offset = -BarTinderApp.SwipingSettings.swipeOutDistance
+        rotation = -BarTinderApp.SwipingSettings.maxRotation
+        Task { await model.swipeLeft(card: cardIngredient)  }
+    } else {
+        offset = 0
+        rotation = 0
+    }
+}`,
+      language: 'swift',
       caption: 'Swipe gestures managed with threshold detection, offset calculations, and rotation animations for smooth card interactions.'
     }
   },
@@ -113,11 +154,18 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
     title: 'Discover Perfect Matches',
     description: 'Based on your ingredient preferences, BarTinder shows you cocktails you can make right now with what you have. Sort them by name, glass type, or difficulty, and add your favorites to the Bar for quick access.',
     image: '/images/screenshots/yourcocktails-portrait.png',
-    codeImage: {
-      src: '/images/screenshots/possible-cocktails.png',
-      alt: 'Possible cocktails algorithm',
-      width: 955,
-      height: 296,
+    codeBlock: {
+      code: `func executeUpdatePossibleCocktails() {
+    let cocktails = repo.callGetContextContent()
+    for cocktail in cocktails {
+        let ingredientNames = Set(cocktail.ingredients.map(\\.name))
+        if selectedIngredients.isSuperset(of: ingredientNames) {
+            cocktail.isPossible = true
+        }
+    }
+    repo.callContextSave()
+}`,
+      language: 'swift',
       caption: 'My first idea was to use Sets for easy ingredient comparison, and even deduce missing ingredients if needed.'
     },
     reversed: true
@@ -126,11 +174,30 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
     title: 'Create Your Signature',
     description: 'Create custom cocktails with your own photos from the library, choose your ingredients, quantities, glassware, and preparation steps. Edit or delete your creations anytime.',
     image: ['/images/screenshots/cocktailcreation-portrait.png', '/images/screenshots/ingredientscreation-portrait.png'],
-    codeImage: {
-      src: '/images/screenshots/create-edit.png',
-      alt: 'Create and edit cocktail implementation',
-      width: 1105,
-      height: 653,
+    codeBlock: {
+      code: `struct CreateEditCocktail: View {
+    @Environment(\\.modelContext) private var context
+    @State private var model = CocktailCreationModel()
+    @Bindable var cocktail: Cocktail
+
+    var body: some View {
+        List {
+            Section {
+                CocktailPreviewSection(selectedImage: $model.selectedPic, cocktail: cocktail)
+            }
+            // ...
+        }
+        .toolbar {
+            CreationToolbar(cocktail: cocktail)
+        }
+        .navigationTitle(context.insertedModelsArray.isEmpty ? "Edit Item" : "New Item")
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .scrollDismissesKeyboard(.interactively)
+        .environment(model)
+    }
+}`,
+      language: 'swift',
       caption: 'Since @Model uses @Observable under the hood, I can directly bind cocktail properties to UI components like TextFields and Pickers. This allows me to pass a @Bindable cocktail to the view and use the same view for both creating and editing.'
     }
   },
@@ -138,11 +205,39 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
     title: 'Detailed Cocktail View',
     description: 'Dive deep into each cocktail with comprehensive details: ingredients list, glassware, and all characteristics. Add cocktails to your personal bar, edit recipes, or customize them to your taste.',
     image: '/images/screenshots/cocktaildetail-portrait.png',
-    codeImage: {
-      src: '/images/screenshots/domain-entities.png',
-      alt: 'Domain entities structure',
-      width: 830,
-      height: 737,
+    codeBlock: {
+      code: `@Model
+final class Cocktail {
+    #Index<Cocktail>([\\.isInBar, \\.isPossible])
+
+    @Attribute(.unique)
+    var name: String
+    @Relationship(deleteRule: .cascade, inverse: \\Ingredient.cocktail)
+    var ingredients: [Ingredient]
+    var isInBar: Bool
+    var isPossible: Bool
+    var imageName: String?
+    @Attribute(.externalStorage)
+    var imageData: Data?
+    var style: CocktailStyle
+    var glass: CocktailGlass
+    var mixingTechnique: CocktailMixingTechnique
+    var difficulty: CocktailDifficulty
+
+    init(...) { ... }
+}
+
+@Model
+final class Ingredient {
+    var name: String
+    var measure: String
+    var unit: Units
+
+    var cocktail: Cocktail?
+
+    init(...) { ... }
+}`,
+      language: 'swift',
       caption: 'A cocktail has a lot to offer. It includes glassware, style, technique, and difficulty.<br />Plus ingredients with measurements and units.'
     },
     reversed: true
