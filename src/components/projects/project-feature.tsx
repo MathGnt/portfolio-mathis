@@ -76,9 +76,9 @@ export default function ProjectFeatureComponent({ feature }: ProjectFeatureProps
             } ${
               feature.title === 'Visual Tracking & Navigation' ? 'lg:ml-10 lg:mt-8' :
               feature.title === 'Deep Dive into Pass Details' ? 'lg:-mt-8 lg:ml-20' :
-              feature.title === 'Live Ground Tracks & Pass Prediction' ? 'lg:-mt-16' : ''
+              feature.title === 'Live Ground Tracks & Pass Prediction' ? 'lg:-mt-16 lg:ml-20' : ''
             } ${
-              feature.title === 'Create Your Signature' ? 'flex-col sm:flex-row gap-2 sm:gap-4 lg:ml-32 lg:scale-90' : ''
+              feature.title === 'Create Your Signature' ? 'gap-2 sm:gap-4 lg:ml-32 lg:scale-90' : ''
             }`}
           >
             {isMultipleImages && Array.isArray(feature.image) ? (

@@ -1,9 +1,10 @@
-import { MediumArticle, MusicAlbum, Game, Movie, Series, Book, TechSection } from '@/types'
+import { MediumArticle, MusicAlbum, Game, Movie, Series, Book, TechSection, Contribution } from '@/types'
 
 export const EXTERNAL_URLS = {
   GITHUB: 'https://github.com/MathGnt',
   MEDIUM: 'https://medium.com/@matgnt',
   EMAIL: 'mailto:matgnt@icloud.com',
+  LINKEDIN: 'https://www.linkedin.com/in/mathisgnt',
   DISCOGS: 'https://www.discogs.com/user/MatGnt98/collection',
   ALBEDO_APP_STORE: 'https://apps.apple.com/fr/app/albedo/id6744074239?l=en-GB',
   BARTENDER_GITHUB: 'https://github.com/MathGnt/BarTinder',
@@ -23,19 +24,11 @@ export const EXTERNAL_URLS = {
 
 export const MEDIUM_ARTICLES: MediumArticle[] = [
   {
-    title: "Deep Dive into Dynamic SwiftData Queries",
-    subtitle: "Explore advanced SwiftData query techniques, from basic filtering to complex dynamic queries that adapt to user interactions. Learn how to build efficient, responsive data layers in your SwiftUI applications.",
-    url: "https://medium.com/@matgnt/deep-dive-into-dynamic-swiftdata-queries-9d029568dd8f",
-    publishedDate: "Jun 2025",
-    readTime: "8 min read",
-    tags: ["SwiftData", "Predicates", "SortDescriptor"]
-  },
-  {
     title: "Mastering Swift 6.2 Concurrency: A Complete Tutorial",
     subtitle: "A comprehensive guide to Swift 6.2's concurrency features including async/await, actors, and structured concurrency. Learn how to write safe, efficient concurrent code with practical examples and best practices.",
     url: "https://medium.com/@matgnt/mastering-swift-6-2-concurrency-a-complete-tutorial-99a939b0f53b",
     publishedDate: "Jul 2025",
-    readTime: "12 min read",
+    readTime: "19 min read",
     tags: ["Concurrency", "Async/Await", "Sendable", "MainActor"]
   },
   {
@@ -43,8 +36,40 @@ export const MEDIUM_ARTICLES: MediumArticle[] = [
     subtitle: "A comprehensive exploration of SwiftUI's redraw system covering attributes recomputation, diffing algorithms, and observation patterns. Understand how SwiftUI optimizes view updates for smooth, efficient UI rendering.",
     url: "https://medium.com/@matgnt/swiftui-redraw-system-in-depth-attributes-recomputation-diffing-and-observation-66b469fdcada",
     publishedDate: "Sep 2025",
-    readTime: "10 min read",
+    readTime: "18 min read",
     tags: ["SwiftUI", "View Updates", "Diffing", "Observation"]
+  },
+  {
+    title: "The Art of SwiftData in 2025",
+    subtitle: "A technical deep dive into SwiftData's internal mechanisms and a proposed architecture pattern for implementing draft contexts. Learn how to manage temporary changes and context conflicts with clean, maintainable code.",
+    url: "https://medium.com/@matgnt/the-art-of-swiftdata-in-2025-from-scattered-pieces-to-a-masterpiece-1fd0cefd8d87",
+    publishedDate: "Nov 2025",
+    readTime: "25 min read",
+    tags: ["SwiftData", "ModelContext", "Bindable"]
+  }
+]
+
+export const CONTRIBUTIONS: Contribution[] = [
+  {
+    appName: "MainOrNot",
+    description: "Contributed technical fixes and improvements to Swift Concurrency implementation",
+    url: "https://apps.apple.com/au/app/mainornot/id6752519866?uo=2",
+    icon: "/images/logos/mainornot.webp",
+    isTopApp: true,
+    topBadge: "Reached Top 10 Developer Tools on the App Store"
+  },
+  {
+    appName: "SatelliteKit",
+    description: "Migrated SPM from Swift 5 to Swift 6 with Sendable conformance, eliminating OOP patterns and transitioning to Protocol-Oriented Programming",
+    url: EXTERNAL_URLS.SATELLITE_KIT,
+    icon: "/images/logos/iconesatellite.png",
+    isClickable: true
+  },
+  {
+    appName: "Caffio",
+    description: "Integrated HealthKit for health data tracking and set up CI/CD pipeline with GitHub Actions and Fastlane",
+    icon: "/images/logos/caffio.webp",
+    isClickable: false
   }
 ]
 
@@ -53,7 +78,7 @@ export const MUSIC_ALBUMS: MusicAlbum[] = [
   { title: "Animals", artist: "Pink Floyd", image: "/images/bands/floyd.jpg" },
   { title: "Tom Petty", artist: "Tom Petty", image: "/images/bands/petty.jpg" },
   { title: "Frank Sinatra", artist: "Sinatra", image: "/images/bands/sinatra.png" },
-  { title: "The Rolling Stones", artist: "Rolling Stones", image: "/images/bands/stones.png" },
+  { title: "The Rolling Stones", artist: "The Rolling Stones", image: "/images/bands/stones.png" },
   { title: "Sum 41", artist: "Sum 41", image: "/images/bands/sum41.jpg" }
 ]
 

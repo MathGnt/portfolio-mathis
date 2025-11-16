@@ -54,3 +54,13 @@ export interface AnimationProps {
   transition?: object
   delay?: number
 }
+
+export interface Contribution {
+  appName: string
+  description: string
+  url?: string
+  icon: string
+  isTopApp?: boolean
+  topBadge?: string
+  isClickable?: boolean
+}

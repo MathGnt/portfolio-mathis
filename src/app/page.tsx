@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 // import Link from 'next/link' // Unused for now
 import MediumSection from '@/components/ui/mediumsection'
+import ContributionsSection from '@/components/ui/contributionssection'
 
 export default function Home() {
   return (
@@ -28,11 +29,11 @@ export default function Home() {
               
               <div className="space-y-5 text-xl text-gray-800 leading-relaxed max-w-4xl">
                 <p>
-                  A French iOS developer. I first noticed Apple's ecosystem back in 2010. Something about it caught my attention, but I ended up pursuing audio instead. Years later, that curiosity came back stronger than ever, so I decided to dive in.
+                  A French iOS developer. I first discovered Apple's ecosystem back in 2010. Something about it caught my attention, but I initially pursued a career in audio instead. Years later, that curiosity came back stronger than ever, and I decided to dive in.
                 </p>
 
                 <p>
-                  I committed to mastering Swift, SwiftUI, and Apple's frameworks, not just learning syntax, but understanding how things work under the hood. I've shipped Albedo to the App Store, built BarTinder as an open-source project with Apple Intelligence integration using Foundation Models, and write technical articles on topics like Swift Concurrency that have received 400+ engagements.
+                  I committed to mastering SwiftUI, UIKit and various Apple frameworks, not just learning syntax, but understanding how everything works under the hood. I've shipped Albedo to the App Store, built BarTinder as an open-source project integrating Apple Intelligence via Foundation Models, and write technical articles on topics like Swift Concurrency that have received 400+ engagements.
                 </p>
 
                 <p>
@@ -89,6 +90,7 @@ export default function Home() {
       </section>
 
       <MediumSection />
+      <ContributionsSection />
     </>
   )
 }

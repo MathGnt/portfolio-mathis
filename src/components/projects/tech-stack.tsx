@@ -71,10 +71,9 @@ export default function TechStackComponent({ techStack, onArchitectureClick }: T
                   Other Packages
                 </h3>
                 <p className="text-base text-gray-600 leading-relaxed text-center mb-10 max-w-3xl mx-auto font-light">
-                  I initially created my own package (AlbedoKit) for magnitude calculations and Earth shadow computations and proposed integrating it into SatelliteKit. 
-                  The maintainer preferred to keep SatelliteKit focused on its core functionality, but suggested I contribute 
-                  to his other package (SatelliteUtilities) that specializes in satellite processing like ground tracks. I added my work to that project. 
-                  I also built a custom backend with Vapor to implement intelligent caching, allowing users to share cached API data and reducing redundant API calls.
+                  I initially created my own package, AlbedoKit, to handle magnitude calculations and Earth shadow computations. I proposed integrating it into SatelliteKit, but the maintainer preferred to keep that library focused on its core functionality. Instead, he suggested contributing to SatelliteUtilities, a project specialized in satellite processing such as ground tracks, where I successfully added my work.
+                  <br /><br />
+                  In addition, I built a custom backend with Vapor to implement intelligent caching. This allows users to share cached API data, reducing redundant API calls and improving performance.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {techStack.customPackages.map((pkg) => (

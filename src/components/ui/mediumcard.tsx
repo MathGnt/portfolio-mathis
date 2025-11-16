@@ -44,9 +44,16 @@ export default function MediumCard({ article, index }: MediumCardProps) {
         </div>
 
         <div className="space-y-3 flex-grow">
-          <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-yellow-700 transition-colors tracking-tight" style={{ fontFamily: 'var(--font-apple-display)' }}>
-            {article.title}
-          </h3>
+          <a
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-yellow-700 transition-colors tracking-tight cursor-pointer" style={{ fontFamily: 'var(--font-apple-display)' }}>
+              {article.title}
+            </h3>
+          </a>
           <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">
             {article.subtitle}
           </p>

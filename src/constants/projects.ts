@@ -19,8 +19,8 @@ export const ALBEDO_CHALLENGE: TechnicalChallenge = {
 export const ALBEDO_FEATURES: ProjectFeature[] = [
   {
     title: 'Live Ground Tracks & Pass Prediction',
-    description: 'Watch real-time satellite ground tracks with MapKit integration. See the next pass for your selected satellite and get precise visibility chances based on weather conditions.',
-    image: '/images/screenshots/IMG_7204-portrait.png',
+    description: 'Watch real-time satellite ground tracks with MapKit integration, fully optimized for dark mode. See the next pass for your selected satellite and get precise visibility chances based on weather conditions.',
+    image: ['/images/screenshots/mapportrait.png', '/images/screenshots/IMG_7204-portrait.png'],
     codeBlock: {
       code: `public static func calculateOrbitPaths(for satellite: Satellite) throws -> [CLLocationCoordinate2D] {
     var coordinates: [CLLocationCoordinate2D] = []
@@ -70,7 +70,7 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
   {
     title: 'Visual Tracking & Navigation',
     description: 'Swift Charts integration provides clear visual representations of satellite data. An integrated compass helps you track exactly where the satellite will pass in the sky.',
-    image: '/images/screenshots/chartview.png',
+    image: '/images/screenshots/chartportrait.png',
     codeBlock: {
       code: `switch model.selectionState {
 case .selected(let selectedMagnitude):
@@ -93,7 +93,7 @@ export const ALBEDO_TECH_STACK: TechStack = {
     { name: 'MapKit', link: 'https://developer.apple.com/documentation/mapkit', description: 'Ground tracks' },
     { name: 'WeatherKit', link: 'https://developer.apple.com/documentation/weatherkit', description: 'Visibility forecasts' },
     { name: 'Swift Charts', link: 'https://developer.apple.com/documentation/charts', description: 'Data visualization' },
-    { name: 'SwiftData', link: 'https://developer.apple.com/documentation/swiftdata', description: 'Local cache' },
+    { name: 'StoreKit', link: 'https://developer.apple.com/documentation/storekit/', description: 'In-app purchases' },
     { name: 'CoreLocation', link: 'https://developer.apple.com/documentation/corelocation', description: 'Position tracking' }
   ],
   customPackages: [
@@ -129,8 +129,8 @@ export const BARTINDER_CHALLENGE: TechnicalChallenge = {
 export const BARTINDER_FEATURES: ProjectFeature[] = [
   {
     title: 'Swipe Your Taste',
-    description: 'Browse through ingredient cards with familiar swipe gestures. Like vodka? Swipe right. Hate Campari? Swipe left.',
-    image: '/images/screenshots/swiping-portrait.png',
+    description: 'Browse through ingredient cards with familiar swipe gestures. Love an ingredient? Swipe right. Not a fan? Swipe left.',
+    image: '/images/screenshots/swipegrenadine.png',
     codeBlock: {
       code: `private func handleSwipe(_ value: DragGesture.Value) {
     if value.translation.width >= threshold {
@@ -153,7 +153,7 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
   {
     title: 'Discover Perfect Matches',
     description: 'Based on your ingredient preferences, BarTinder shows you cocktails you can make right now with what you have. Sort them by name, glass type, or difficulty, and add your favorites to the Bar for quick access.',
-    image: '/images/screenshots/yourcocktails-portrait.png',
+    image: '/images/screenshots/homepagedark.png',
     codeBlock: {
       code: `func executeUpdatePossibleCocktails() {
     let cocktails = repo.callGetContextContent()
@@ -173,7 +173,7 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
   {
     title: 'Create Your Signature',
     description: 'Create custom cocktails with your own photos from the library, choose your ingredients, quantities, glassware, and preparation steps. Edit or delete your creations anytime.',
-    image: ['/images/screenshots/cocktailcreation-portrait.png', '/images/screenshots/ingredientscreation-portrait.png'],
+    image: ['/images/screenshots/createcocktail.png', '/images/screenshots/createingredients.png'],
     codeBlock: {
       code: `struct CreateEditCocktail: View {
     @Environment(\\.modelContext) private var context
@@ -190,7 +190,7 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
         .toolbar {
             CreationToolbar(cocktail: cocktail)
         }
-        .navigationTitle(context.insertedModelsArray.isEmpty ? "Edit Item" : "New Item")
+        .navigationTitle(context.insertedModelsArray.isEmpty ? "Edit Cocktail" : "New Cocktail")
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .scrollDismissesKeyboard(.interactively)
@@ -204,7 +204,7 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
   {
     title: 'Detailed Cocktail View',
     description: 'Dive deep into each cocktail with comprehensive details: ingredients list, glassware, and all characteristics. Add cocktails to your personal bar, edit recipes, or customize them to your taste.',
-    image: '/images/screenshots/cocktaildetail-portrait.png',
+    image: '/images/screenshots/cocktaildetail.png',
     codeBlock: {
       code: `@Model
 final class Cocktail {

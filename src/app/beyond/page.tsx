@@ -53,7 +53,7 @@ export default function Beyond() {
                 Music is a huge part of my life. I've been playing guitar since my youth and have a deep love for classic rock from the 70s. 
                 I grew up listening to music from my era, but gradually became interested in all types and periods. 
                 I love owning music physically, so I collect CDs and vinyl records. 
-                I also listen to a lot of music on streaming platforms obviously, I find that algorithms are always really good at helping us discover new gems!
+                I also listen to a lot of music on streaming platforms, and I find that algorithms are always really good at helping us discover new gems!
               </motion.p>
               
             </div>
@@ -67,7 +67,6 @@ export default function Beyond() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
                     className="group"
                   >
                     <div className="aspect-square bg-white rounded-lg shadow-2xl overflow-hidden border border-gray-200 relative">
@@ -108,8 +107,8 @@ export default function Beyond() {
             className="text-lg text-center mb-12 max-w-2xl mx-auto"
             style={{ color: '#86868b' }}
           >
-            I'm not a huge gamer, but there are some games I've really loved 
-            and enjoy revisiting from time to time. Oh, and I happen to play chess too.
+            I'm not a huge gamer, but there are some games I've really loved
+            and enjoy revisiting from time to time. I play chess too!
           </motion.p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -120,7 +119,6 @@ export default function Beyond() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
-                whileHover={{ scale: 1.05, y: -5 }}
                 className="group"
               >
                 <div className="aspect-[3/4] rounded-2xl shadow-lg overflow-hidden">
@@ -170,7 +168,6 @@ export default function Beyond() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
                 className="group"
               >
                 <div className="aspect-[2/3] bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
@@ -219,7 +216,6 @@ export default function Beyond() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                whileHover={{ scale: 1.05, y: -5 }}
                 className="group"
               >
                 <div className="aspect-[2/3] bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">

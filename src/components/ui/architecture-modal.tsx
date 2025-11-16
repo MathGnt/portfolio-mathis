@@ -47,13 +47,13 @@ export default function ArchitectureModal({ isOpen, onClose }: ArchitectureModal
             
           <div className="px-8 pb-8 space-y-4 text-gray-600">
             <p>
-              <strong className="text-gray-900">Vertical Separation:</strong> I chose a layered "vertical" architecture over "horizontal" feature-based separation since the app was lightweight. However, for better scalability, one could organize by features "horizontally" first to anticipate future modularity and easier Swift Package Manager integration.
+              <strong className="text-gray-900">Horizontal Separation:</strong> Each feature has its own folder with its associated views, components, and models. This approach makes it easier to modularize into Swift Package Manager later if needed.
             </p>
             <p>
               <strong className="text-gray-900">Dependency Inversion:</strong> The Repository conforms to the <code className="bg-gray-100 px-2 py-1 rounded text-sm">Servable</code> protocol, allowing for easy testing and flexibility.
             </p>
             <p>
-              <strong className="text-gray-900">SwiftUI Integration:</strong> SwiftDataSource is injected via <code className="bg-gray-100 px-2 py-1 rounded text-sm">@Environment</code> for small logic operations that don't require going through all the architecture layers.
+              <strong className="text-gray-900">SwiftData Integration:</strong> I use the <code className="bg-gray-100 px-2 py-1 rounded text-sm">modelContext</code> environment provided by the framework, with a custom extension to switch between the main context and the draft context.
             </p>
           </div>
         </div>

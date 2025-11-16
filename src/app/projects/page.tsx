@@ -7,6 +7,7 @@ import ProjectIntro from '@/components/projects/project-intro'
 import ProjectFeature from '@/components/projects/project-feature'
 import TechStack from '@/components/projects/tech-stack'
 import Divider from '@/components/projects/divider'
+import ProjectLink from '@/components/projects/project-link'
 import {
   ALBEDO_HERO,
   ALBEDO_CHALLENGE,
@@ -36,14 +37,13 @@ export default function Projects() {
     `Since Albedo is an app focused on REST APIs and physical calculations, I also wanted to
     create a simpler CRUD application that allows adding, updating and deleting items using Swift Data.`,
 
-    `Built with the simplicity and modern approach of SwiftUI, BarTinder serves as an excellent learning resource for iOS developers at any level. Whether you're exploring SwiftData and CRUD operations, or discovering the latest iOS 26 features like Foundation Models (Apple Intelligence), Liquid Glass design elements, and Xcode 26's Default Actor Isolation and Approachable Concurrency settings, this project showcases real-world implementations that stay current with Apple's newest developments.`,
+    `Built with the simplicity and modern approach of SwiftUI, BarTinder serves as an excellent learning resource for iOS developers at any level. The app leverages the latest iOS 26 APIs and features, including Foundation Models (Apple Intelligence), Liquid Glass design elements, SwiftData for CRUD operations, and Xcode 26's Default Actor Isolation and Approachable Concurrency settings.`,
 
     `Since I don't have a formal UI/UX design background, I drew heavy inspiration from Apple's stock applications and design language.
     I pay close attention to Apple's Human Interface Guidelines to ensure the app feels truly native.`,
 
-    `I also wanted to build BarTinder with a very clean architecture using use cases, repositories,
-    dependency injection, and proper separation of concerns. I wrote extensive tests using Swift Testing
-    to practice modern testing techniques and catch any breaking changes instantly.
+    `I also wanted to build BarTinder with a clean, readable architecture while respecting proper separation of concerns. I wrote extensive tests using Swift Testing
+    to practice modern testing techniques, with Xcode Cloud automatically catching any breaking changes.
     By focusing on the CRUD aspect, lists, scroll views and UI/UX, I was targeting a common application pattern
     that is widely used across many types of products.`
   ]
@@ -80,14 +80,18 @@ export default function Projects() {
         <ProjectFeature key={index} feature={feature} />
       ))}
 
-      <TechStack 
-        techStack={BARTINDER_TECH_STACK} 
+      <TechStack
+        techStack={BARTINDER_TECH_STACK}
         onArchitectureClick={() => setIsArchitectureModalOpen(true)}
       />
-      
-      <ArchitectureModal 
-        isOpen={isArchitectureModalOpen} 
-        onClose={() => setIsArchitectureModalOpen(false)} 
+
+      {BARTINDER_HERO.link && (
+        <ProjectLink link={BARTINDER_HERO.link} />
+      )}
+
+      <ArchitectureModal
+        isOpen={isArchitectureModalOpen}
+        onClose={() => setIsArchitectureModalOpen(false)}
       />
     </div>
   )
