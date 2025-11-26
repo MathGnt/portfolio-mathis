@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
@@ -6,12 +6,15 @@ import Footer from '@/components/layout/footer'
 export const metadata: Metadata = {
   title: 'Mathis Gaignet - iOS Developer',
   description: 'iOS Developer building apps with Swift & SwiftUI',
-  themeColor: '#f1f5f9',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
     title: 'Mathis Gaignet'
   }
+}
+
+export const viewport: Viewport = {
+  themeColor: '#f1f5f9',
 }
 
 export default function RootLayout({

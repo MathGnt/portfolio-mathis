@@ -5,6 +5,10 @@ export interface MediumArticle {
   publishedDate: string
   readTime: string
   tags: string[]
+  featured?: {
+    text: string
+    url: string
+  }
 }
 
 export interface MusicAlbum {

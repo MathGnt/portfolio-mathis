@@ -9,6 +9,10 @@ interface MediumArticle {
   publishedDate: string
   readTime: string
   tags: string[]
+  featured?: {
+    text: string
+    url: string
+  }
 }
 
 interface MediumCardProps {
@@ -54,10 +58,11 @@ export default function MediumCard({ article, index }: MediumCardProps) {
               {article.title}
             </h3>
           </a>
+
           <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">
             {article.subtitle}
           </p>
-          
+
           <div className="flex flex-wrap gap-2 mt-4">
             {article.tags.map((tag, tagIndex) => (
               <span
@@ -68,6 +73,28 @@ export default function MediumCard({ article, index }: MediumCardProps) {
               </span>
             ))}
           </div>
+
+          {article.featured && (
+            <motion.a
+              href={article.featured.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.01 }}
+              className="block border border-black rounded-lg px-3 py-2.5 text-xs text-gray-700 hover:bg-gray-50 transition-all duration-200 mt-3"
+            >
+              <div className="flex items-start gap-2">
+                <img
+                  src="/images/logos/firebase.png"
+                  alt="Firebase"
+                  className="w-4 h-4 mt-0.5 flex-shrink-0 object-contain"
+                />
+                <span className="flex-1 leading-relaxed">{article.featured.text}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </div>
+            </motion.a>
+          )}
         </div>
 
         <motion.a

@@ -37,7 +37,11 @@ export const MEDIUM_ARTICLES: MediumArticle[] = [
     url: "https://medium.com/@matgnt/swiftui-redraw-system-in-depth-attributes-recomputation-diffing-and-observation-66b469fdcada",
     publishedDate: "Sep 2025",
     readTime: "18 min read",
-    tags: ["SwiftUI", "View Updates", "Diffing", "Observation"]
+    tags: ["SwiftUI", "View Updates", "Diffing", "Observation"],
+    featured: {
+      text: "Featured in Peter Friese's Newsletter — Staff Developer Advocate, Google Firebase",
+      url: "https://x.com/peterfriese/status/1990336621603070141?s=20"
+    }
   },
   {
     title: "The Art of SwiftData in 2025",
