@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { DESIGN_TOKENS } from '@/constants'
 
 interface MediumArticle {
   title: string
@@ -26,90 +27,59 @@ export default function MediumCard({ article, index }: MediumCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden group h-full"
+      className="h-full flex flex-col"
     >
-      <div className="p-6 h-full flex flex-col">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-sm">M</span>
-          </div>
-          <div className="flex-1">
-            <p className="text-sm text-gray-500">Medium</p>
-            <p className="text-xs text-gray-400">{article.publishedDate} • {article.readTime}</p>
-          </div>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17"/>
-            </svg>
-          </motion.div>
-        </div>
+      {/* Header minimaliste */}
+      <div className="mb-3">
+        <p className="text-xs text-gray-500 mb-1">{article.publishedDate} • {article.readTime}</p>
+      </div>
 
-        <div className="space-y-3 flex-grow">
-          <a
-            href={article.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-yellow-700 transition-colors tracking-tight cursor-pointer" style={{ fontFamily: 'var(--font-apple-display)' }}>
-              {article.title}
-            </h3>
-          </a>
+      {/* Titre principal - style Apple - SEUL élément cliquable vers l'article */}
+      <a
+        href={article.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group"
+      >
+        <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 leading-tight tracking-tight group-hover:text-blue-600 transition-colors" style={{ fontFamily: 'var(--font-apple-display)' }}>
+          {article.title}
+        </h3>
+      </a>
 
-          <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">
-            {article.subtitle}
-          </p>
+      {/* Description */}
+      <p className="text-gray-600 text-base leading-relaxed mb-4 flex-grow">
+        {article.subtitle}
+      </p>
 
-          <div className="flex flex-wrap gap-2 mt-4">
-            {article.tags.map((tag, tagIndex) => (
-              <span
-                key={tagIndex}
-                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-xs font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {article.featured && (
-            <motion.a
-              href={article.featured.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.01 }}
-              className="block border border-black rounded-lg px-3 py-2.5 text-xs text-gray-700 hover:bg-gray-50 transition-all duration-200 mt-3"
-            >
-              <div className="flex items-start gap-2">
-                <img
-                  src="/images/logos/firebase.png"
-                  alt="Firebase"
-                  className="w-4 h-4 mt-0.5 flex-shrink-0 object-contain"
-                />
-                <span className="flex-1 leading-relaxed">{article.featured.text}</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                </svg>
-              </div>
-            </motion.a>
-          )}
-        </div>
-
-        <motion.a
-          href={article.url}
+      {/* Featured badge si présent - Lien vers Twitter */}
+      {article.featured && (
+        <a
+          href={article.featured.url}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-sm hover:shadow-md"
+          className={`block mb-4 p-3 bg-gray-50 ${DESIGN_TOKENS.borderRadius.card} hover:bg-gray-100 transition-colors`}
         >
-          <span>Read</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M7 17L17 7M17 7H7M17 7V17"/>
-          </svg>
-        </motion.a>
+          <div className="flex items-start gap-2">
+            <img
+              src="/images/logos/firebase.png"
+              alt="Firebase"
+              className="w-4 h-4 mt-0.5 flex-shrink-0 object-contain"
+            />
+            <span className="text-xs text-gray-600 leading-relaxed">{article.featured.text}</span>
+          </div>
+        </a>
+      )}
+
+      {/* Tags épurés */}
+      <div className="flex flex-wrap gap-2">
+        {article.tags.map((tag, tagIndex) => (
+          <span
+            key={tagIndex}
+            className="text-xs text-gray-500 font-medium"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </motion.div>
   )

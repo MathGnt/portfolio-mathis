@@ -234,7 +234,7 @@ export default function Beyond() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-gradient-to-b from-amber-50 to-slate-50">
+      <section className="py-20 px-6 bg-gradient-to-b from-blue-50 to-slate-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}

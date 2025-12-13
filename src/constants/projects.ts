@@ -13,14 +13,17 @@ export const ALBEDO_HERO: ProjectHero = {
 
 export const ALBEDO_CHALLENGE: TechnicalChallenge = {
   title: 'Technical Challenge',
-  description: 'One key challenge was implementing the complex physics calculations to determine the exact minute when satellites enter and exit Earth\'s shadow, plus calculating magnitude variations throughout each pass. Obviously the architecture wasn\'t simple, I was at the beginning of my learning journey. I had to break and rebuild the app several times until I truly understood SwiftUI architecture.'
+  description: 'One major challenge was processing data from three APIs, mapping them into entities, applying business logic to calculate statistics, and handling it all with structured concurrency. Another was implementing physics calculations to pinpoint when satellites enter and exit Earth’s shadow and track magnitude variations for each pass.'
 }
 
 export const ALBEDO_FEATURES: ProjectFeature[] = [
   {
-    title: 'Live Ground Tracks & Pass Prediction',
-    description: 'Watch real-time satellite ground tracks with MapKit integration, fully optimized for dark mode. See the next pass for your selected satellite and get precise visibility chances based on weather conditions.',
+    title: 'Live Ground Tracks',
+    description: 'I created AlbedoKit, my Swift Package Manager for handling orbital mechanics calculations. It enables clean code reuse and makes it easy to write focused, targeted tests for each component, ensuring a modular and maintainable design.',
     image: ['/images/screenshots/mapportrait.png', '/images/screenshots/IMG_7204-portrait.png'],
+    imageStyles: {
+      containerClassName: 'gap-2 sm:gap-4 lg:ml-32'
+    },
     codeBlock: {
       code: `public static func calculateOrbitPaths(for satellite: Satellite) throws -> [CLLocationCoordinate2D] {
     var coordinates: [CLLocationCoordinate2D] = []
@@ -42,25 +45,36 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
     }
   },
   {
-    title: 'Deep Dive into Pass Details',
-    description: 'Explore every aspect of a satellite pass across 7 days of visibility. Get rise and set times, detailed weather conditions, satellite magnitude variations, and astronomical context.',
+    title: 'Structured Concurrency',
+    description: 'Anything that could be fetched or calculated in parallel was handled with structured concurrency. TaskGroup and async let were my best friends for delivering a smooth and responsive experience for the user. WeatherKit played a key role as well, offering seamless Swift integration and a rich set of comprehensive data.',
     image: ['/images/screenshots/passlist.png', '/images/screenshots/maindetail.png'],
+    imageStyles: {
+      containerClassName: 'gap-2 sm:gap-4 lg:ml-32'
+    },
     codeBlock: {
-      code: `do {
-    async let hourlyForecast = weatherService.weather(
-        for: userLocation,
-        including: .hourly(startDate: nowDate, endDate: sevenDaysAhead)
-    )
-    async let dailyForecast = weatherService.weather(
-        for: userLocation,
-        including: .daily(startDate: nowDate, endDate: sevenDaysAhead)
-    )
-
-    let (hourly, daily) = try await (hourlyForecast, dailyForecast)
-    return (hourly, daily)
-
-} catch {
-    throw WeatherError.failedToFetchWeather
+      code: `let validPasses = try await withThrowingTaskGroup { group in
+    for pass in passResult.passes {
+        group.addTask(name: "Create domain pass") {
+            // ... Get Pass Times
+            let satellitePass = SatellitePass(satellite: satellite, startTime: startTime, setTime: setTime, observer: userLocationLLA)
+            let shadowEvent = try await ShadowEvents.calculateShadowEvents(satellitePass)
+            let riseTime = await mapper.getRiseTime(startTime, shadowEvent)
+            let setTime = await mapper.getSetTime(endTime, shadowEvent)
+            
+            async let celestialWeatherSC = mapWeather(riseTime, setTime, weather)
+            async let apparentMagnitudesSC = try Magnitude.calculateMagnitudeRange(satellitePass)
+            
+            let (celestialWeather, apparentMagnitudes) = try await (celestialWeatherSC, apparentMagnitudesSC)
+            // ... Domain Pass
+        }
+    }
+    var results: [Pass] = []
+    results.reserveCapacity(passResult.passes.count)
+    
+    for try await pass in group {
+        results.append(pass)
+    }
+    return results
 }`,
       language: 'swift',
       caption: 'Albedo powered by WeatherKit for pass forecasting, visibility probability calculations, and weather conditions analysis.'
@@ -69,21 +83,63 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
   },
   {
     title: 'Visual Tracking & Navigation',
-    description: 'Swift Charts integration provides clear visual representations of satellite data. An integrated compass helps you track exactly where the satellite will pass in the sky.',
+    description: 'I loved Swift Charts from the very first day I discovered it. I find this framework incredibly powerful for displaying real-time statistics, and it was a perfect fit for my use case.',
     image: '/images/screenshots/chartportrait.png',
     codeBlock: {
-      code: `switch model.selectionState {
-case .selected(let selectedMagnitude):
-    RuleMarkSelection(selectedMagnitude: selectedMagnitude, shadowEvent: model.pass.shadowEvent)
-case .unselectedWithShadowEvent(let shadowState):
-    ShadowRuleMark(shadowState: shadowState)
-case .unselected:
-    EmptyRuleMark()
+      code: `Chart(model.pass.apparentMagnitudes) { magnitude in
+    if let date = magnitude.date,
+       let magnitude = magnitude.magnitude {
+        Plot {
+            LineMark(
+                x: .value("Date", date, unit: .second),
+                y: .value("Magnitude", magnitude)
+            )
+            .foregroundStyle(.chartPrimary)
+            .symbol(by: .value("Magnitude", "Magnitude"))
+            .interpolationMethod(.catmullRom)
+        }
+        
+        switch model.selectionState {
+        case .selected(let selectedMagnitude):
+            RuleMarkSelection(selectedMagnitude: selectedMagnitude, shadowEvent: model.pass.shadowEvent)
+        case .unselectedWithShadowEvent(let shadowState):
+            ShadowRuleMark(shadowState: shadowState)
+        case .unselected:
+            EmptyRuleMark()
+        }
+    }
+}
+.animation(.easeOut(duration: 0.3), value: model.rawSelectedDate)`,
+      language: 'swift',
+      caption: 'Chart selection switcher using chartXSelection to manage interactive data visualization.'
+    }
+  },
+    {
+    title: 'Live Activity',
+    description: 'While I initially created a demo implementing Apple\'s Live Activity to display satellites passing in real time on the lock screen / dynamic island, I decided to leave it aside for now to focus on core, essential features. This allowed me to deliver a working product quickly, gather user feedback, and iterate efficiently.',
+    image: '/videos/liveactivitydemo.MOV',
+    imageStyles: {
+      containerClassName: 'lg:scale-75'
+    },
+    codeBlock: {
+      code: `DynamicIslandExpandedRegion(.leading) {
+    HStack {
+        Image(context.attributes.satellitePic)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 21)
+        Text(context.attributes.satelliteName)
+        
+    }
+    .padding(.leading, 8)
+    .minimumScaleFactor(0.7)
+    .lineLimit(1)
 }`,
       language: 'swift',
       caption: 'Chart selection switcher using chartXSelection to manage interactive data visualization.'
     }
   }
+
 ]
 
 export const ALBEDO_TECH_STACK: TechStack = {
@@ -128,8 +184,8 @@ export const BARTINDER_CHALLENGE: TechnicalChallenge = {
 
 export const BARTINDER_FEATURES: ProjectFeature[] = [
   {
-    title: 'Swipe Your Taste',
-    description: 'Browse through ingredient cards with familiar swipe gestures. Love an ingredient? Swipe right. Not a fan? Swipe left.',
+    title: 'Swipe Gesture',
+    description: 'I wanted to push my skills with advanced SwiftUI animations, and I managed to recreate the Tinder-style swipe in a smooth and intuitive way. SwiftUI includes a new GestureState property wrapper that automatically resets to its default value when the gesture ends. However, I chose not to use it because my system needed to work with a threshold and disappearance animations.',
     image: '/images/screenshots/swipegrenadine.png',
     codeBlock: {
       code: `private func handleSwipe(_ value: DragGesture.Value) {
@@ -152,7 +208,7 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
   },
   {
     title: 'Discover Perfect Matches',
-    description: 'Based on your ingredient preferences, BarTinder shows you cocktails you can make right now with what you have. Sort them by name, glass type, or difficulty, and add your favorites to the Bar for quick access.',
+    description: 'By tracking the ingredients users like through swipe gestures, I use sets to quickly identify which cocktails they can make with their chosen ingredients. There are multiple ways to achieve this, but it struck me to use isSuperset when designing the ingredient comparison system.',
     image: '/images/screenshots/homepagedark.png',
     codeBlock: {
       code: `func executeUpdatePossibleCocktails() {
@@ -171,9 +227,12 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
     reversed: true
   },
   {
-    title: 'Create Your Signature',
-    description: 'Create custom cocktails with your own photos from the library, choose your ingredients, quantities, glassware, and preparation steps. Edit or delete your creations anytime.',
+    title: 'Cocktail Creation',
+    description: 'The goal was to provide a single view for both creating and editing a cocktail. This keeps the user in context and ensures reusability. I implemented this feature using a generic Swift Data draft context. This way, the view is only responsible for doing its job: displaying content.',
     image: ['/images/screenshots/createcocktail.png', '/images/screenshots/createingredients.png'],
+    imageStyles: {
+      containerClassName: 'gap-2 sm:gap-4 lg:ml-32'
+    },
     codeBlock: {
       code: `struct CreateEditCocktail: View {
     @Environment(\\.modelContext) private var context
@@ -202,8 +261,8 @@ export const BARTINDER_FEATURES: ProjectFeature[] = [
     }
   },
   {
-    title: 'Detailed Cocktail View',
-    description: 'Dive deep into each cocktail with comprehensive details: ingredients list, glassware, and all characteristics. Add cocktails to your personal bar, edit recipes, or customize them to your taste.',
+    title: 'Swift Data',
+    description: 'I leveraged Swift Data to its full potential, using all the features it offers. The Index macro improves performance when iterating heavily over certain values. I also learned to use the externalStorage option to avoid storing large data directly in the main storage.',
     image: '/images/screenshots/cocktaildetail.png',
     codeBlock: {
       code: `@Model

@@ -1,6 +1,7 @@
 'use client'
 
 import { TechnicalChallenge } from '@/types/projects'
+import { DESIGN_TOKENS } from '@/constants'
 
 interface TechnicalChallengeProps {
   challenge: TechnicalChallenge
@@ -8,7 +9,7 @@ interface TechnicalChallengeProps {
 
 export default function TechnicalChallengeComponent({ challenge }: TechnicalChallengeProps) {
   return (
-    <div className="bg-gray-200/60 rounded-2xl shadow-xl border-2 border-gray-300/40 max-w-xs mx-auto">
+    <div className={`bg-gray-200/60 ${DESIGN_TOKENS.borderRadius.card} shadow-xl border-2 border-gray-300/40 max-w-xs mx-auto`}>
       {/* Top spacer */}
       <div className="h-8"></div>
       

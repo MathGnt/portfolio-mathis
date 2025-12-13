@@ -41,14 +41,14 @@ export default function Header() {
           </Link>
           
           <div className="flex-1 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2 px-2 sm:px-0">
-            <div className="flex items-center space-x-1 bg-white/80 backdrop-blur-sm rounded-full p-1 border border-yellow-100/60 w-full sm:w-auto justify-center">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
               {links.map((link) => (
                 <Link key={link.href} href={link.href}>
                   <div
-                    className={`relative px-3 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                    className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
                       pathname === link.href
-                        ? 'text-gray-900 bg-yellow-400 shadow-lg'
-                        : 'text-yellow-700 hover:text-yellow-800 hover:bg-yellow-50'
+                        ? 'bg-gray-900 text-white shadow-lg'
+                        : 'bg-white text-gray-900 hover:bg-gray-100 shadow-sm'
                     }`}
                   >
                     <span className="relative z-10">{link.label}</span>

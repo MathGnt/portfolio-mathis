@@ -23,14 +23,12 @@ export default function Projects() {
   const [isArchitectureModalOpen, setIsArchitectureModalOpen] = useState(false)
 
   const albedoIntroDescription = [
-    `I wanted to build a relatively advanced app right from the start. My goal was to dive
-    deep into the code, explore Apple's documentation in detail, challenge myself by running 
-    into bugs and learning to solve them, and develop disciplined, well-organized code.
-    In terms of design, I aimed to keep the look and feel very native, drawing inspiration from the
-    button styles used in Apple Maps.`,
+    `I’m passionate about astronomy and regularly use the Heavens Above website to track satellites. 
+    I wanted to create an app with the same level of accuracy, but delivered through a polished and enjoyable mobile experience`,
     
-    `As for the app's focus, I'm passionate about astronomy. I often use the Heavens Above website to track
-    satellites, and I wanted to create something just as precise; but with a polished and enjoyable mobile experience.`
+    `I knew from the start that it would be a relatively advanced app, but that challenge was intentional. 
+    It pushed me to dive deep into the codebase, explore Apple’s documentation, run into bugs, learn how to solve them, and develop clean, well-structured code. 
+    The design was intentionally kept very native, following Apple’s Human Interface Guidelines and drawing inspiration from the button styles and overall feel of Apple Maps.`
   ]
 
   const bartenderIntroDescription = [

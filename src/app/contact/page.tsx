@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { EXTERNAL_URLS } from '@/constants'
+import { EXTERNAL_URLS, DESIGN_TOKENS } from '@/constants'
 
 export default function Contact() {
   return (
@@ -34,7 +34,7 @@ export default function Contact() {
         >
           <Link
             href={EXTERNAL_URLS.EMAIL}
-            className="group flex items-center justify-between p-8 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-sm"
+            className={`group flex items-center justify-between p-8 ${DESIGN_TOKENS.borderRadius.card} bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-sm`}
           >
             <div className="flex items-center space-x-5">
               <div className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center">
@@ -63,7 +63,7 @@ export default function Contact() {
             href={EXTERNAL_URLS.GITHUB}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-8 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-sm"
+            className={`group flex items-center justify-between p-8 ${DESIGN_TOKENS.borderRadius.card} bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-sm`}
           >
             <div className="flex items-center space-x-5">
               <div className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center">
@@ -92,7 +92,7 @@ export default function Contact() {
             href={EXTERNAL_URLS.LINKEDIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-8 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-sm"
+            className={`group flex items-center justify-between p-8 ${DESIGN_TOKENS.borderRadius.card} bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-sm`}
           >
             <div className="flex items-center space-x-5">
               <div className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center">

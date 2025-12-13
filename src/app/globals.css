@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fefce8; /* yellow-50 */
+  --background: #f1f5f9; /* slate-100 */
   --foreground: #171717;
 }
 
@@ -15,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fefce8; /* garde le même jaune clair même en dark mode */
+    --background: #f1f5f9; /* slate-100 */
     --foreground: #171717;
   }
 }

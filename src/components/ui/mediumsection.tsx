@@ -6,7 +6,7 @@ import { MEDIUM_ARTICLES, EXTERNAL_URLS, DESIGN_TOKENS } from '@/constants'
 
 export default function MediumSection() {
   return (
-    <section className="py-16 bg-gradient-to-br from-slate-50 to-yellow-50">
+    <section className="py-16 bg-gradient-to-br from-slate-100 via-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,11 +22,17 @@ export default function MediumSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {/* Divider supérieur */}
+        <div className="w-full h-px bg-gray-300 mb-12"></div>
+
+        <div className="grid md:grid-cols-3 gap-12 max-w-7xl mx-auto">
           {MEDIUM_ARTICLES.map((article, index) => (
             <MediumCard key={index} article={article} index={index} />
           ))}
         </div>
+
+        {/* Divider inférieur */}
+        <div className="w-full h-px bg-gray-300 mt-12"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Contribution } from '@/types'
+import { DESIGN_TOKENS } from '@/constants'
 
 interface ContributionCardProps {
   contribution: Contribution
@@ -25,45 +26,41 @@ export default function ContributionCard({ contribution, index }: ContributionCa
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
-      className={`block bg-white rounded-xl shadow-lg ${isClickable ? 'hover:shadow-2xl cursor-pointer' : ''} transition-all duration-300 border border-gray-200 overflow-hidden group`}
+      className={`block bg-white ${DESIGN_TOKENS.borderRadius.card} ${isClickable ? 'hover:shadow-sm cursor-pointer' : ''} transition-all duration-300 overflow-hidden group h-full`}
     >
-      <div className="p-8 flex flex-col sm:flex-row items-center gap-6">
-        {/* App Icon */}
-        <div className="flex-shrink-0 relative">
+      <div className="p-8 flex flex-col items-center text-center h-full">
+        {/* Titre en premier - cliquable si URL */}
+        {isClickable ? (
+          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-3" style={{ fontFamily: 'var(--font-apple-display)' }}>
+            {contribution.appName}
+          </h3>
+        ) : (
+          <h3 className="text-xl font-semibold text-gray-900 mb-3" style={{ fontFamily: 'var(--font-apple-display)' }}>
+            {contribution.appName}
+          </h3>
+        )}
+
+        {/* Description en deuxième */}
+        <p className="text-gray-600 leading-relaxed text-sm mb-4 flex-grow">
+          {contribution.description}
+        </p>
+
+        {/* App Icon en troisième */}
+        <div className="mb-4">
           <Image
             src={contribution.icon}
             alt={`${contribution.appName} icon`}
-            width={80}
-            height={80}
-            className="rounded-2xl shadow-md"
+            width={contribution.appName === 'SatelliteKit' ? 120 : 100}
+            height={contribution.appName === 'SatelliteKit' ? 120 : 100}
+            className="rounded-3xl"
           />
         </div>
 
-        {/* Content */}
-        <div className="flex-grow text-center sm:text-left">
-          <h3 className={`text-2xl font-bold text-gray-900 ${isClickable ? 'group-hover:text-blue-600' : ''} transition-colors mb-2`} style={{ fontFamily: 'var(--font-apple-display)' }}>
-            {contribution.appName}
-          </h3>
-          {contribution.isTopApp && contribution.topBadge && (
-            <span className="inline-block bg-white text-black text-xs font-semibold px-3 py-1 rounded-full border border-black mb-3">
-              {contribution.topBadge}
-            </span>
-          )}
-          <p className="text-gray-600 leading-relaxed">
-            {contribution.description}
-          </p>
-        </div>
-
-        {/* Arrow Icon */}
-        {isClickable && (
-          <motion.div
-            whileHover={{ x: 5 }}
-            className="text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17"/>
-            </svg>
-          </motion.div>
+        {/* Top Badge en bas si présent */}
+        {contribution.isTopApp && contribution.topBadge && (
+          <span className="inline-block bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-full">
+            {contribution.topBadge}
+          </span>
         )}
       </div>
     </Component>

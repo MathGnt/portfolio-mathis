@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
-      <body className="bg-slate-100 text-gray-900">
+      <body className="bg-slate-100 text-gray-900 overflow-x-hidden">
         <Header />
         <main className="pt-20">
           {children}

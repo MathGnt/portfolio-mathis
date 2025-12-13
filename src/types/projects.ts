@@ -18,6 +18,10 @@ export interface ProjectFeature {
   title: string
   description: string
   image?: string | string[]
+  imageStyles?: {
+    containerClassName?: string
+    imageClassName?: string
+  }
   codeImage?: {
     src: string
     alt: string

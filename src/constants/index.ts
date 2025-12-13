@@ -169,5 +169,8 @@ export const DESIGN_TOKENS = {
   animations: {
     defaultDuration: 0.8,
     staggerDelay: 0.1
+  },
+  borderRadius: {
+    card: 'rounded-[2rem]'
   }
 } as const
