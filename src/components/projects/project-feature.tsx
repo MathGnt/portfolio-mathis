@@ -16,7 +16,8 @@ export default function ProjectFeatureComponent({ feature }: ProjectFeatureProps
   const isMultipleImages = Array.isArray(feature.image)
 
   const isVideo = (src: string) => {
-    return src.endsWith('.MOV') || src.endsWith('.mp4')
+    const lowerSrc = src.toLowerCase()
+    return lowerSrc.endsWith('.mov') || lowerSrc.endsWith('.mp4')
   }
 
   return (

@@ -117,7 +117,7 @@ export const ALBEDO_FEATURES: ProjectFeature[] = [
     {
     title: 'Live Activity',
     description: 'While I initially created a demo implementing Apple\'s Live Activity to display satellites passing in real time on the lock screen / dynamic island, I decided to leave it aside for now to focus on core, essential features. This allowed me to deliver a working product quickly, gather user feedback, and iterate efficiently.',
-    image: '/videos/liveactivitydemo.MOV',
+    image: '/videos/liveactivitydemo.mov',
     imageStyles: {
       containerClassName: 'lg:scale-75'
     },
